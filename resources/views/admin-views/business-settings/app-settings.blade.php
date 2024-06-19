@@ -41,6 +41,12 @@
 
         @php($most_reviewed_foods=\App\Models\BusinessSetting::where(['key'=>'most_reviewed_foods'])->first())
         @php($most_reviewed_foods=$most_reviewed_foods?$most_reviewed_foods->value:null)
+        
+        @php($show_pass_on_app=\App\Models\BusinessSetting::where(['key'=>'show_pass_on_app'])->first())
+        @php($show_pass_on_app=$show_pass_on_app?$show_pass_on_app->value:null)
+        
+        @php($show_dishes_on_app=\App\Models\BusinessSetting::where(['key'=>'show_dishes_on_app'])->first())
+        @php($show_dishes_on_app=$show_dishes_on_app?$show_dishes_on_app->value:null)
     
         <div class="row">
             <div class="col-md-6 col-sm-6 col-12">
@@ -81,6 +87,28 @@
                     <label class="toggle-switch toggle-switch-sm d-flex justify-content-between border border-secondary rounded px-4 form-control" for="most_reviewed_foods">
                         <span class="pr-2 text-capitalize">{{__('messages.most_reviewed_foods')}}:</span> 
                         <input type="checkbox" class="toggle-switch-input" onclick="location.href='{{route('admin.business-settings.toggle-settings',['most_reviewed_foods',$most_reviewed_foods?0:1, 'most_reviewed_foods'])}}'" id="most_reviewed_foods" {{$most_reviewed_foods?'checked':''}}>
+                        <span class="toggle-switch-label">
+                            <span class="toggle-switch-indicator"></span>
+                        </span>
+                    </label>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-6 col-12">
+                <div class="form-group">
+                    <label class="toggle-switch toggle-switch-sm d-flex justify-content-between border border-secondary rounded px-4 form-control" for="show_pass_on_app">
+                        <span class="pr-2 text-capitalize">{{__('Show pass on app')}}:</span> 
+                        <input type="checkbox" class="toggle-switch-input" onclick="location.href='{{route('admin.business-settings.toggle-settings',['show_pass_on_app',$show_pass_on_app?0:1, 'show_pass_on_app'])}}'" id="show_pass_on_app" {{$show_pass_on_app?'checked':''}}>
+                        <span class="toggle-switch-label">
+                            <span class="toggle-switch-indicator"></span>
+                        </span>
+                    </label>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-6 col-12">
+                <div class="form-group">
+                    <label class="toggle-switch toggle-switch-sm d-flex justify-content-between border border-secondary rounded px-4 form-control" for="show_dishes_on_app">
+                        <span class="pr-2 text-capitalize">{{__('Show dishes on app')}}:</span> 
+                        <input type="checkbox" class="toggle-switch-input" onclick="location.href='{{route('admin.business-settings.toggle-settings',['show_dishes_on_app',$show_dishes_on_app?0:1, 'show_dishes_on_app'])}}'" id="show_dishes_on_app" {{$show_dishes_on_app?'checked':''}}>
                         <span class="toggle-switch-label">
                             <span class="toggle-switch-indicator"></span>
                         </span>

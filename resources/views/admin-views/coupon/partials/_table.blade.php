@@ -20,6 +20,7 @@
         <th>{{__('messages.discount')}} {{__('messages.type')}}</th>
         <th>{{__('messages.start')}} {{__('messages.date')}}</th>
         <th>{{__('messages.expire')}} {{__('messages.date')}}</th>
+        <th>{{__('Visibility To All')}}</th>
         <th>{{__('messages.status')}}</th>
         <th>{{__('messages.action')}}</th>
     </tr>
@@ -41,6 +42,14 @@
             <td>{{$coupon['discount_type']}}</td>
             <td>{{$coupon['start_date']}}</td>
             <td>{{$coupon['expire_date']}}</td>
+            <td>
+                <label class="toggle-switch toggle-switch-sm" for="couponCheckbox1{{$coupon->id}}">
+                    <input type="checkbox" onclick="location.href='{{route('admin.coupon.visible_to_all',[$coupon['id'],$coupon->visible_to_all?0:1])}}'" class="toggle-switch-input" id="couponCheckbox1{{$coupon->id}}" {{$coupon->visible_to_all?'checked':''}}>
+                    <span class="toggle-switch-label">
+                        <span class="toggle-switch-indicator"></span>
+                    </span>
+                </label>
+            </td>
             <td>
                 <label class="toggle-switch toggle-switch-sm" for="couponCheckbox{{$coupon->id}}">
                     <input type="checkbox" onclick="location.href='{{route('admin.coupon.status',[$coupon['id'],$coupon->status?0:1])}}'" class="toggle-switch-input" id="couponCheckbox{{$coupon->id}}" {{$coupon->status?'checked':''}}>

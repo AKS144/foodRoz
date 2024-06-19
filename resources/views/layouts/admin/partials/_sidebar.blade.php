@@ -299,10 +299,10 @@
                     </li>
                     @endif
 
-                    <li class="navbar-vertical-aside-has-menu {{Request::is('admin/zone*')?'active':''}}">
+                    <li class="navbar-vertical-aside-has-menu {{Request::is('admin/time-slot*')?'active':''}}">
                             <a class="js-navbar-vertical-aside-menu-link nav-link"
                                href="{{route('admin.time-slot.index')}}" title="{{__('Time Slots')}}">
-                                <i class="tio-city nav-icon"></i>
+                                <i class="tio-time nav-icon"></i>
                                 <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">
                                     {{__('Time Slots')}}                                </span>
                             </a>
@@ -397,8 +397,8 @@
                             </a>
                             <ul class="js-navbar-vertical-aside-submenu nav nav-sub"
                                 style="display: {{Request::is('admin/addon*')?'block':'none'}}">
-                                <li class="nav-item {{Request::is('admin/addon/add-new')?'active':''}}">
-                                    <a class="nav-link " href="{{route('admin.addon.add-new')}}"
+                                <li class="nav-item {{Request::is('admin/addon*')?'active':''}}">
+                                    <a class="nav-link " href="{{route('admin.addon.list')}}"
                                        title="{{__('messages.addon')}} {{__('messages.list')}}">
                                         <span class="tio-circle nav-indicator-icon"></span>
                                         <span class="text-truncate">{{__('messages.list')}}</span>
@@ -429,9 +429,22 @@
                     <li class="navbar-vertical-aside-has-menu {{Request::is('admin/zone*')?'active':''}}">
                             <a class="js-navbar-vertical-aside-menu-link nav-link"
                                href="{{route('admin.food-dish.index')}}" title="{{__('Dishes')}}">
-                                <i class="tio-city nav-icon"></i>
+                                
+                                <i class="tio-restaurant nav-icon"></i>
                                 <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">
                                     {{__('Dishes')}}</span>
+                            </a>
+                        </li>
+                    <!-- Dishes ends -->
+                    
+                    <!-- Dishes starts -->
+                    
+                    <li class="navbar-vertical-aside-has-menu {{Request::is('admin/passes*')?'active':''}}">
+                            <a class="js-navbar-vertical-aside-menu-link nav-link"
+                               href="{{route('admin.passes.index')}}" title="{{__('Pass')}}">
+                                <i class="tio-send nav-icon"></i>
+                                <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">
+                                    {{__('Pass')}}</span>
                             </a>
                         </li>
                     <!-- Dishes ends -->
@@ -911,6 +924,22 @@
                         </li>
                 @endif
                 <!-- End Employee -->
+
+                <li class="nav-item">
+                        <small class="nav-subtitle"
+                               title="{{__('messages.employee_handle')}}">Contact Us</small>
+                        <small class="tio-more-horizontal nav-subtitle-replacer"></small>
+                    </li>
+
+                        <li class="navbar-vertical-aside-has-menu {{Request::is('admin/contact_us*')?'active':''}}">
+                            <a class="js-navbar-vertical-aside-menu-link nav-link"
+                               href="{{route('admin.contact_us.index')}}" title="{{__('Contact Us')}}">
+                                <i class="tio-contacts nav-icon"></i>
+                                <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">
+                                    {{__('Contact Us')}}                                </span>
+                            </a>
+                        </li>
+
 
 
                     <li class="nav-item" style="padding-top: 100px">

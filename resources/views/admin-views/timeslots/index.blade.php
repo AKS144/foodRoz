@@ -16,7 +16,7 @@
                     <div class="page-header">
                         <div class="row align-items-center">
                             <div class="col-sm mb-2 mb-sm-0">
-                                <h1 class="page-header-title"><i class="tio-filter-list"></i> {{$Module}} <span class="badge badge-soft-dark ml-2" id="itemCount">{{$Records->count()}}</span></h1>
+                                <h1 class="page-header-title"><i class="tio-time"></i> {{$Module}} <span class="badge badge-soft-dark ml-2" id="itemCount">{{$Records->count()}}</span></h1>
                             </div>
                         </div>
                     </div>
@@ -27,7 +27,7 @@
                     
 
                     <div class="card-body">
-                        
+                        @include('admin-views.messages') 
                         <div class="row">
                             <div class="col-sm-12">
                             <a class="btn btn-lg btn-primary" href="{{ route($RoutePrefixName.'.create') }}">{{ $RecordAddModule }}</a>
@@ -78,14 +78,14 @@
                                                 <td>
                                                     <div class="action-box">
                                                         <div class="edit-button">
-                                                            <a href="{{ route($RoutePrefixName.'.edit',$Record->id) }}" class="btn btn-block btn-primary">Edit</a>
+                                                            <a href="{{ route($RoutePrefixName.'.edit',$Record->id) }}" class="btn btn-sm btn-white" title="Edit Time Slot"><i class="tio-edit"></i></a>
                                                         </div>
 
                                                       <div class="delete-button"> 
                                                         <form action="{{ route($RoutePrefixName.'.destroy',$Record->id) }}" method="POST"  onsubmit="return confirm('Do you really want to delete?');">
                                                             @method('DELETE')
                                                             @csrf
-                                                            <button class="btn btn-block btn-danger">Delete</button>
+                                                            <button class="btn btn-sm btn-danger"><i class="tio-delete-outlined"></i></button>
                                                         </form>
                                                         
                                                         </div>

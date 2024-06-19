@@ -115,6 +115,15 @@ class CouponController extends Controller
         return back();
     }
 
+    public function visible_to_all(Request $request)
+    {
+        $coupon = Coupon::find($request->id);
+        $coupon->visible_to_all = $request->visible_to_all;
+        $coupon->save();
+        Toastr::success(trans('Visiblity Status Updated'));
+        return back();
+    }
+
     public function delete(Request $request)
     {
         $coupon = Coupon::find($request->id);

@@ -13,6 +13,14 @@ use App\Scopes\RestaurantScope;
 
 class AddOnController extends Controller
 {
+    public $Module              = 'AddOn';
+    public $RecordModule        = 'AddOn';
+    public $RecordAddModule     = 'Add New AddOn';
+    public $RecordEditModule    = 'Edit AddOn';
+    public $RecordShowModule    = 'View AddOn';
+    public $ViewFolder          =  'admin-views.addon';
+    public $RoutePrefixName     = 'admin.addon';
+
     public function index(Request $request)
     {
         $restaurant_id = $request->query('restaurant_id', 'all');
@@ -23,6 +31,37 @@ class AddOnController extends Controller
         ->orderBy('name')->paginate(config('default_pagination'));
         $restaurant =$restaurant_id !='all'? Restaurant::findOrFail($restaurant_id):null;
         return view('admin-views.addon.index', compact('addons', 'restaurant'));
+    }
+
+    public function list(Request $request)
+    {
+        $restaurant_id = $request->query('restaurant_id', 'all');
+        $addons = AddOn::withoutGlobalScope(RestaurantScope::class)
+        ->when(is_numeric($restaurant_id), function($query)use($restaurant_id){
+            return $query->where('restaurant_id', $restaurant_id);
+        })
+        ->orderBy('name')->paginate(config('default_pagination'));
+        $restaurant =$restaurant_id !='all'? Restaurant::findOrFail($restaurant_id):null;
+
+        $Module             = $this->Module;
+        $RecordModule       = $this->RecordModule;
+        $RecordAddModule    = $this->RecordAddModule;
+        $RoutePrefixName    = $this->RoutePrefixName;
+
+        return view('admin-views.addon.list', compact('addons', 'restaurant','RecordModule','RecordAddModule','RoutePrefixName'));
+    }
+
+    public function create(Request $request) 
+    {
+        $restaurant_id      = $request->query('restaurant_id', 'all');     
+
+        $restaurant         = Restaurant::orderBy('id','DESC')->get();  
+        
+        $Module             = $this->Module;
+        $RecordModule       = $this->RecordModule;
+        $RecordAddModule    = $this->RecordAddModule;
+        $RoutePrefixName    = $this->RoutePrefixName;
+        return view($this->ViewFolder.'.add-edit', compact('Module','RecordModule','RecordAddModule','RoutePrefixName','restaurant'));
     }
 
     public function store(Request $request)
@@ -40,15 +79,32 @@ class AddOnController extends Controller
         $addon->name = $request->name;
         $addon->price = $request->price;
         $addon->restaurant_id = $request->restaurant_id;
+        $addon->display_price = $request->display_price;
+        $addon->description = $request->description;
+        $addon->discount = $request->discount;
+        $addon->discount_type = $request->discount_type;
         $addon->save();
         Toastr::success(trans('messages.addon_added_successfully'));
+        return redirect()->route($RoutePrefixName.'.list');
         return back();
     }
 
-    public function edit($id)
+    public function edit(Request $request,$id)
     {
-        $addon = AddOn::withoutGlobalScope(RestaurantScope::class)->find($id);
-        return view('admin-views.addon.edit', compact('addon'));
+        $restaurant_id      = $request->query('restaurant_id', 'all');     
+
+        $restaurant         = Restaurant::orderBy('id','DESC')->get();  
+        
+        $Record = AddOn::withoutGlobalScope(RestaurantScope::class)->find($id);
+
+        $Module             = $this->Module;
+        $RecordModule       = $this->RecordModule;
+        $RecordEditModule   = $this->RecordEditModule;
+        $RoutePrefixName    = $this->RoutePrefixName;
+        return view($this->ViewFolder.'.add-edit', compact('Record','Module','RecordModule','RecordEditModule','RoutePrefixName','restaurant'));
+
+        /*$addon = AddOn::withoutGlobalScope(RestaurantScope::class)->find($id);
+        return view('admin-views.addon.edit', compact('addon'));*/
     }
 
     public function update(Request $request, $id)
@@ -66,8 +122,16 @@ class AddOnController extends Controller
         $addon->name = $request->name;
         $addon->price = $request->price;
         $addon->restaurant_id = $request->restaurant_id;
+        $addon->display_price = $request->display_price;
+        $addon->description = $request->description;
+        $addon->discount = $request->discount;
+        $addon->discount_type = $request->discount_type;
         $addon->save();
+
+        $RoutePrefixName    = $this->RoutePrefixName;
+
         Toastr::success(trans('messages.addon_updated_successfully'));
+        return redirect()->route($RoutePrefixName.'.list');
         return redirect(route('admin.addon.add-new'));
     }
 

@@ -16,7 +16,7 @@
                     <div class="page-header">
                         <div class="row align-items-center">
                             <div class="col-sm mb-2 mb-sm-0">
-                                <h1 class="page-header-title"><i class="tio-restaurant"></i> {{$Module}} <span class="badge badge-soft-dark ml-2" id="itemCount">{{$Records->count()}}</span></h1>
+                                <h1 class="page-header-title"><i class="tio-contacts"></i> {{$Module}} <span class="badge badge-soft-dark ml-2" id="itemCount">{{$Records->count()}}</span></h1>
                             </div>
                         </div>
                     </div>
@@ -28,30 +28,20 @@
 
                     <div class="card-body">
                         @include('admin-views.messages') 
-                        <div class="row">
+                       <!--  <div class="row">
                             <div class="col-sm-12">
                             <a class="btn btn-lg btn-primary" href="{{ route($RoutePrefixName.'.create') }}">{{ $RecordAddModule }}</a>
                             </div>
-                        </div>              
+                        </div> -->              
                     <br> 
                     <div style="overflow-x: auto;">                  
                       <table class="table table-responsive-sm table-striped" id="tableID">
                         <thead>
                           <tr>
                             <th>Sr.No.</th>
-                            <th>Dish Name</th>
-                            <th>Display Price</th>
-                            <th>Maximum Seller Price</th>      
-                            <th>Discount</th>      
-                            <th>Discount Type</th>      
-                            <th>Item Type</th>      
-                            <th>Category</th>      
-                            <th>Attributes</th>      
-                            <th>Addons</th>      
-                            <th>Available Time Starts</th>      
-                            <th>Available Time Ends</th>      
-                            <th>Preparation Time</th>
-                            <th>Image</th>
+                            <th>Name</th>
+                            <th>Phone</th>
+                            <th>E-mail</th>
                             <th>Action</th>
                           </tr>
                         </thead>
@@ -63,46 +53,19 @@
                                             <tr>
                                                 <td> {{ $i }} </td>
                                                 <td> {{ $Record->name }} </td>
-                                                <td> {{ $Record->display_price }} </td>
-                                                <td> {{ $Record->maximum_seller_price }} </td>
-                                                <td> {{ $Record->discount }} </td>
-                                                <td> 
-                                                    @if($Record->discount_type == 'amount')
-                                                        Amount
-                                                    @elseif($Record->discount_type == 'percentage')
-                                                        Percentage
-                                                    @endif
-                                                </td>
-                                                <td>
-                                                    @if($Record->item_type =='veg') 
-                                                        Veg
-                                                    @elseif($Record->item_type =='non_veg')
-                                                        Non Veg
-                                                    @else
-                                                        Vegan
-                                                    @endif
-                                                </td>
-                                                <td> {{ $Record->category_id }} </td>
-                                                <td> {{ $Record->dish_attributes }} </td>
-                                                <td> {{ $Record->addons }} </td>
-                                                <td> {{ $Record->available_time_starts }} </td>
-                                                <td> {{ $Record->available_time_ends }} </td>
-                                                <td> {{ $Record->preparation_time }} </td>
-                                                <td>
-                                                    <img src="{{ asset('admin/dishes/'.$Record->image) }}" height="50px">
-                                                </td>
-                                                
+                                                <td> {{ $Record->phone }} </td>
+                                                <td> {{ $Record->email }} </td>
                                                 <td>
                                                     <div class="action-box">
                                                         <div class="edit-button">
-                                                            <a href="{{ route($RoutePrefixName.'.edit',$Record->id) }}" class="btn btn-sm btn-white" title="Edit Dish"><i class="tio-edit"></i></a>
+                                                            <a href="{{ route($RoutePrefixName.'.edit',$Record->id) }}" class="btn btn-sm btn-white" title="Edit Pass"><i class="tio-edit"></i></a>
                                                         </div>
 
                                                       <div class="delete-button"> 
                                                         <form action="{{ route($RoutePrefixName.'.destroy',$Record->id) }}" method="POST"  onsubmit="return confirm('Do you really want to delete?');">
                                                             @method('DELETE')
                                                             @csrf
-                                                            <button class="btn btn-sm btn-danger"><i class="tio-delete-outlined"></i></button>
+                                                            <button  class="btn btn-sm btn-danger"><i class="tio-delete-outlined"></i></button>
                                                         </form>
                                                         
                                                         </div>

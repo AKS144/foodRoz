@@ -112,6 +112,7 @@ Route::group(['namespace' => 'Admin', 'as' => 'admin.'], function () {
             Route::get('update/{id}', 'CouponController@edit')->name('update');
             Route::post('update/{id}', 'CouponController@update');
             Route::get('status/{id}/{status}', 'CouponController@status')->name('status');
+            Route::get('visible_to_all/{id}/{visible_to_all}', 'CouponController@visible_to_all')->name('visible_to_all');
             Route::delete('delete/{id}', 'CouponController@delete')->name('delete');
             Route::post('search', 'CouponController@search')->name('search');
         });
@@ -142,6 +143,18 @@ Route::group(['namespace' => 'Admin', 'as' => 'admin.'], function () {
         Route::resource('food-dish',     'DishController');        
         
         /*DishController ends*/
+
+        /*PassController starts*/
+        
+        Route::resource('passes',     'PassController');        
+        
+        /*PassController ends*/
+
+        /*ContactUsController starts*/
+        
+        Route::resource('contact_us',     'ContactUsController');        
+        
+        /*ContactUsController ends*/
 
         Route::group(['prefix' => 'vendor', 'as' => 'vendor.'], function () {
                 Route::get('get-restaurants-data/{restaurant}', 'VendorController@get_restaurant_data')->name('get-restaurants-data');
@@ -182,7 +195,9 @@ Route::group(['namespace' => 'Admin', 'as' => 'admin.'], function () {
         });
 
         Route::group(['prefix' => 'addon', 'as' => 'addon.', 'middleware' => ['module:addon']], function () {
+            Route::get('list', 'AddOnController@list')->name('list');
             Route::get('add-new', 'AddOnController@index')->name('add-new');
+            Route::get('create', 'AddOnController@create')->name('create');
             Route::post('store', 'AddOnController@store')->name('store');
             Route::get('edit/{id}', 'AddOnController@edit')->name('edit');
             Route::post('update/{id}', 'AddOnController@update')->name('update');

@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\CentralLogics\Helpers;
 use App\Models\BusinessSetting;
+use App\Models\ContactUs;
 use Illuminate\Http\Request;
+use DB, Session;
 
 class HomeController extends Controller
 {
@@ -51,6 +53,26 @@ class HomeController extends Controller
     public function contact_us()
     {
         return view('contact-us');
+    }
+
+    public function store_contact_us(Request $request) 
+    {
+        DB::beginTransaction();
+            try {
+                    $Records                            = new ContactUs;
+                    $Records->name                      = $request->name;                    
+                    $Records->phone                     = $request->phone;
+                    $Records->email                     = $request->email;
+                    $Records->message                   = $request->message;                    
+                    $Records->save();
+                    DB::commit();
+                    $request->session()->flash('message', 'Thank You. We will conatact you soon');
+                } 
+            catch (\Exception $e) {
+                DB::rollback();
+                $request->session()->flash('message',$e->getMessage());
+            }
+            return redirect()->route('contact-us');
     }
 
     public function privacy_policy()

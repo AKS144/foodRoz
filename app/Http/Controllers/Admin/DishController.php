@@ -71,7 +71,7 @@ class DishController extends Controller
 
                 $Records->save();
                 DB::commit();
-                $request->session()->flash('message', 'Dishe Created Successfully.');
+                $request->session()->flash('message', 'Dish Created Successfully.');
             } 
             catch (\Exception $e) {
                 DB::rollback();
@@ -129,7 +129,7 @@ class DishController extends Controller
                 $Records->save();
                 DB::commit();
                 
-                $request->session()->flash('message', 'Dishe Updated Successfully.');
+                $request->session()->flash('message', 'Dish Updated Successfully.');
 
             } 
             catch (\Exception $e) {
@@ -143,7 +143,7 @@ class DishController extends Controller
     public function destroy(Request $request, $id)
     {
         $user = DishModel::destroy($id);
-        $request->session()->flash('message', 'Dishe deleted successfully.');
+        $request->session()->flash('message', 'Dish deleted successfully.');
         return redirect()->route($this->RoutePrefixName.'.index');
     }
 
