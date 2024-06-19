@@ -126,7 +126,7 @@
             </section>
             <!-- Top End -->
         </div>
-    </main>
+    </main>       
 <!-- /.container-fluid -->
 
 <script type="text/javascript">

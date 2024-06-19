@@ -17,7 +17,7 @@ class PassController extends Controller
     public $ViewFolder          =  'admin-views.passes';
     public $RoutePrefixName     = 'admin.passes';
 
-
+ 
     public function index(Request $Request) 
     {
         

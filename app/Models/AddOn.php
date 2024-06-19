@@ -7,7 +7,7 @@ use App\Scopes\ZoneScope;
 use Illuminate\Database\Eloquent\Model;
 
 class AddOn extends Model
-{
+{ 
     protected $casts = [
         'price' => 'float',
         'display_price' => 'float',

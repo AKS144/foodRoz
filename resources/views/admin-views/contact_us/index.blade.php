@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css">
 @section('content')
 
-<div class="content container-fluid">
+<div class="content container-fluid"> 
           
             <!-- Page Header -->
                     <div class="page-header">
@@ -26,7 +26,7 @@
                 <div class="card">
                     
 
-                    <div class="card-body">
+                    <div class="card-body">     
                         @include('admin-views.messages') 
                        <!--  <div class="row">
                             <div class="col-sm-12">

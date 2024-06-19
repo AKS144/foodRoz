@@ -1,7 +1,7 @@
 @extends('layouts.admin.app')
 
 @section('title') {{$Module}} @endsection
-
+ 
 @push('css_or_js')
 
 @endpush

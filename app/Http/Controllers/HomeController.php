@@ -48,7 +48,7 @@ class HomeController extends Controller
         return view('ribbon-view',compact('data'));
 
 
-    }
+    } 
 
     public function contact_us()
     {

@@ -9,7 +9,7 @@
 @section('content')
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css">
 @section('content')
-
+  
 <div class="content container-fluid">
           
             <!-- Page Header -->

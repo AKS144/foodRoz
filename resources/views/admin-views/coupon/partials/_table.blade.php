@@ -8,7 +8,7 @@
         "isResponsive": false,
         "isShowPaging": false,
         "pagination": "datatablePagination"
-        }'>
+        }'> 
     <thead class="thead-light">
     <tr>
         <th>{{__('messages.#')}}</th>

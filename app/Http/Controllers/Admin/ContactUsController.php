@@ -18,7 +18,7 @@ class ContactUsController extends Controller
     public $RoutePrefixName     = 'admin.contact_us';
 
 
-    public function index(Request $Request) 
+    public function index(Request $Request)     
     {
         
         $Records            = ContactUs::orderBy('id','DESC')->get();

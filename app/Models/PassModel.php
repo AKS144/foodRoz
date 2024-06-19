@@ -13,5 +13,5 @@ class PassModel extends Model
     protected $dates = ['deleted_at'];
     public $timestamps = true;
     protected $table = 'pass_table';
-    protected $fillable = ['*'];
+    protected $fillable = ['*'];   
 }

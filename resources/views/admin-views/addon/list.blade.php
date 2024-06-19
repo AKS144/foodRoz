@@ -4,7 +4,7 @@
 
 @push('css_or_js')
 
-@endpush
+@endpush   
 
 @section('content')
     <div class="content container-fluid">

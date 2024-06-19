@@ -9,7 +9,7 @@ use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 use Rap2hpoutre\FastExcel\FastExcel;
 use Illuminate\Support\Facades\DB;
-use App\Scopes\RestaurantScope;
+use App\Scopes\RestaurantScope; 
 
 class AddOnController extends Controller
 {

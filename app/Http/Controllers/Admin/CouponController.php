@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class CouponController extends Controller
-{
+{ 
     public function add_new()
     {
         $coupons = Coupon::latest()->paginate(config('default_pagination'));

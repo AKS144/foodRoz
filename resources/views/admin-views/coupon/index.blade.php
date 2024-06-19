@@ -3,7 +3,7 @@
 @section('title','Add new coupon')
 
 @push('css_or_js')
-
+ 
 @endpush
 
 @section('content')

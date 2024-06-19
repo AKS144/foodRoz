@@ -131,9 +131,9 @@ Route::group(['namespace' => 'Admin', 'as' => 'admin.'], function () {
             Route::get('bulk-export', 'AttributeController@bulk_export_index')->name('bulk-export-index');
             Route::post('bulk-export', 'AttributeController@bulk_export_data')->name('bulk-export');
         });
-
+ 
         /*TimeSlotController starts*/
-        
+         
         Route::resource('time-slot',     'TimeSlotController');        
         
         /*TimeSlotController ends*/

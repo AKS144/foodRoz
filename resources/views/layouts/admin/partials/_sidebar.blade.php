@@ -921,7 +921,7 @@
                                 </li>
 
                             </ul>
-                        </li>
+                        </li> 
                 @endif
                 <!-- End Employee -->
 
