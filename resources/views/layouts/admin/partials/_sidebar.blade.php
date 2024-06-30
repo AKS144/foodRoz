@@ -299,6 +299,7 @@
                     </li>
                     @endif
 
+                    @if(\App\CentralLogics\Helpers::module_permission_check('time_slots'))
                     <li class="navbar-vertical-aside-has-menu {{Request::is('admin/time-slot*')?'active':''}}">
                             <a class="js-navbar-vertical-aside-menu-link nav-link"
                                href="{{route('admin.time-slot.index')}}" title="{{__('Time Slots')}}">
@@ -307,7 +308,7 @@
                                     {{__('Time Slots')}}                                </span>
                             </a>
                         </li>
-
+                    @endif
                     <!-- End Restaurant -->
 
                     <li class="nav-item">
@@ -425,7 +426,7 @@
                 <!-- End AddOn -->
                     
                     <!-- Dishes starts -->
-                    
+                    @if(\App\CentralLogics\Helpers::module_permission_check('dishes'))
                     <li class="navbar-vertical-aside-has-menu {{Request::is('admin/zone*')?'active':''}}">
                             <a class="js-navbar-vertical-aside-menu-link nav-link"
                                href="{{route('admin.food-dish.index')}}" title="{{__('Dishes')}}">
@@ -435,10 +436,12 @@
                                     {{__('Dishes')}}</span>
                             </a>
                         </li>
+                    @endif
                     <!-- Dishes ends -->
                     
-                    <!-- Dishes starts -->
+                    <!-- Pass starts -->
                     
+                    @if(\App\CentralLogics\Helpers::module_permission_check('pass'))
                     <li class="navbar-vertical-aside-has-menu {{Request::is('admin/passes*')?'active':''}}">
                             <a class="js-navbar-vertical-aside-menu-link nav-link"
                                href="{{route('admin.passes.index')}}" title="{{__('Pass')}}">
@@ -447,7 +450,8 @@
                                     {{__('Pass')}}</span>
                             </a>
                         </li>
-                    <!-- Dishes ends -->
+                    @endif
+                    <!-- Pass ends -->
 
                     <!-- Food -->
                     @if(\App\CentralLogics\Helpers::module_permission_check('food'))
@@ -576,6 +580,21 @@
                         </li>
                     @endif
                 <!-- End Campaign -->
+
+                <!-- offer_banners starts -->
+                    @if(\App\CentralLogics\Helpers::module_permission_check('offer_banners'))
+                    <li class="navbar-vertical-aside-has-menu {{Request::is('admin/offer_banners*')?'active':''}}">
+                        <a class="js-navbar-vertical-aside-menu-link nav-link"
+                           href="{{route('admin.offer_banners.index')}}" title="Offer Banners"
+                        >
+                            <i class="tio-image nav-icon"></i>
+                            <span
+                                class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">Offer Banners</span>
+                        </a>
+                    </li>
+                    @endif
+                <!-- offer_banners ends -->
+
                     <!-- Banner -->
                     @if(\App\CentralLogics\Helpers::module_permission_check('banner'))
                         <li class="navbar-vertical-aside-has-menu {{Request::is('admin/banner*')?'active':''}}">
@@ -587,7 +606,7 @@
                                     class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">{{__('messages.banners')}}</span>
                             </a>
                         </li>
-                    @endif
+                    @endif 
                 <!-- End Banner -->
                     <!-- Coupon -->
                     @if(\App\CentralLogics\Helpers::module_permission_check('coupon'))
@@ -925,6 +944,7 @@
                 @endif
                 <!-- End Employee -->
 
+                @if(\App\CentralLogics\Helpers::module_permission_check('contact_us'))
                 <li class="nav-item">
                         <small class="nav-subtitle"
                                title="{{__('messages.employee_handle')}}">Contact Us</small>
@@ -939,6 +959,8 @@
                                     {{__('Contact Us')}}                                </span>
                             </a>
                         </li>
+
+                @endif
 
 
 

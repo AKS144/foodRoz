@@ -73,7 +73,7 @@
 
                         <div class="col-md-12">
                             <div class="form-group row">
-                                <label class="control-label col-xl-12">E-mail<span class="asterisk">*</span></label>
+                                <label class="control-label col-xl-12">E-mail<span class="asterisk"></span></label>
                                 <div class="col-xl-12">                      
                                     {{ Form::text('email', old('email'), ['class' => 'form-control','id' => 'email','placeholder' => 'E-mail']) }}
                                     <div class="badge-danger" id="emailCheck" role="alert"></div>
@@ -83,7 +83,16 @@
 
                         <div class="col-md-12">
                             <div class="form-group row">
-                                    <label class="control-label col-xl-12">Message<span class="asterisk">*</span></label>
+                                <label class="control-label col-xl-12">Subject<span class="asterisk"></span></label>
+                                <div class="col-xl-12">                      
+                                    {{ Form::text('subject', old('subject'), ['class' => 'form-control','id' => 'subject','placeholder' => 'Subject']) }}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="form-group row">
+                                    <label class="control-label col-xl-12">Message<span class="asterisk"></span></label>
                                     <div class="col-xl-12">                      
                                         {{ Form::textarea('message', old('message'), ['class' => 'form-control','id' => 'message', 'rows' => 3,  'placeholder' => 'Message']) }}
                                     <div class="badge-danger" id="messageCheck" role="alert"></div>
@@ -96,7 +105,7 @@
                             <div class="form-group row">
                                 <div class="col-md-6 mb-3">
                                     <button type="submit" id="submit" class="btn btn-sm btn-success btn-user btn-block">
-                                        <i class="fa fa-check"></i> Save</button>
+                                        <i class="fa fa-check"></i> Submit</button>
                                 </div>
                             </div>
                         </div>
@@ -159,7 +168,7 @@ $(document).ready(function ()
     }
 
 
-    $("#emailCheck").hide();
+    /*$("#emailCheck").hide();
     let emailError = true;
     $("#email").on('keyup blur', function () {
         validateEmail();
@@ -186,7 +195,7 @@ $(document).ready(function ()
             emailError = true;
             return true;
         }
-    } 
+    } */
 
    
 
@@ -221,7 +230,7 @@ $(document).ready(function ()
         }
     }
 
-    $("#messageCheck").hide();
+    /*$("#messageCheck").hide();
        let messageError = true;
        $("#message").on('keyup blur', function () {
            validateMessage();
@@ -239,22 +248,20 @@ $(document).ready(function ()
            messageError = true;
            return true;
        }
-    }
+    }*/
 
 
 
     $('#submit').on('click', function(event) {
         
         validateName();
-        validateEmail();
+       // validateEmail();
         validatePhone();
-        validateMessage();
+        //validateMessage();
 
 
         if (nameError == false || 
-            emailError == false ||
-            phoneError == false ||
-            messageError == false
+            phoneError == false 
         ) {  return false; }
         
     });

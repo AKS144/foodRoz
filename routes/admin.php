@@ -132,6 +132,13 @@ Route::group(['namespace' => 'Admin', 'as' => 'admin.'], function () {
             Route::post('bulk-export', 'AttributeController@bulk_export_data')->name('bulk-export');
         });
  
+        /*OfferBannerController starts*/
+         
+        Route::resource('offer_banners',     'OfferBannerController');     
+        Route::get('offer_banners/status/{id}/{status}', 'OfferBannerController@update_status')->name('offer_banners.status');   
+        
+        /*OfferBannerController ends*/
+ 
         /*TimeSlotController starts*/
          
         Route::resource('time-slot',     'TimeSlotController');        

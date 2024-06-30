@@ -34,6 +34,17 @@
     </div>
         <!-- Hero carousel End-->
 
+        <div id="hero-owl-carousel" class="hero-owl-carousel owl-theme">
+            @foreach ($heroSlider as $hs)
+        <div class="slide" style="background-image:url({{asset('public/assets/landing/image')}}/{{$hs['img']}});">
+            <div class="slide-content">
+                <h1>{{$hs['title']}}</h1>
+                <p>{{$hs['desc']}}</p>
+            </div>
+        </div>
+        @endforeach
+    </div>
+
     @endif
             <!-- Top Start -->
             <section class="top-start">

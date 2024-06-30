@@ -178,6 +178,53 @@
                                     <label class="form-check-label qcont text-dark" for="zone">{{__('messages.zone')}}</label>
                                 </div>
                             </div>
+
+
+                            <div class="col-md-3">
+                                <div class="form-group form-check">
+                                    <input type="checkbox" name="modules[]" value="time_slots" class="form-check-input"
+                                           id="time_slots">
+                                    <label class="form-check-label qcont text-dark" for="time_slots">Time Slots</label>
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-3">
+                                <div class="form-group form-check">
+                                    <input type="checkbox" name="modules[]" value="contact_us" class="form-check-input"
+                                           id="contact_us">
+                                    <label class="form-check-label qcont text-dark" for="contact_us">Contact Us</label>
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-3">
+                                <div class="form-group form-check">
+                                    <input type="checkbox" name="modules[]" value="dishes" class="form-check-input"
+                                           id="dishes">
+                                    <label class="form-check-label qcont text-dark" for="dishes">Dishes</label>
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-3">
+                                <div class="form-group form-check">
+                                    <input type="checkbox" name="modules[]" value="pass" class="form-check-input"
+                                           id="pass">
+                                    <label class="form-check-label qcont text-dark" for="pass">Pass</label>
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-3">
+                                <div class="form-group form-check">
+                                    <input type="checkbox" name="modules[]" value="offer_banners" class="form-check-input"
+                                           id="offer_banners">
+                                    <label class="form-check-label qcont text-dark" for="offer_banners">Offer Banners</label>
+                                </div>
+                            </div>
+
+
                         </div>
 
                         <button type="submit" class="btn btn-primary">{{__('messages.submit')}}</button>
