@@ -482,6 +482,10 @@ class BusinessSettingsController extends Controller
         {
             return view('admin-views.business-settings.landing-page-settings.index');
         }
+        else if($tab == 'occasions')
+        {
+            return view('admin-views.business-settings.landing-page-settings.occasions');
+        }
         else if($tab == 'links')
         {
             return view('admin-views.business-settings.landing-page-settings.links');
@@ -529,6 +533,33 @@ class BusinessSettingsController extends Controller
             ]);
             Toastr::success(trans('messages.landing_page_text_updated'));
         }
+        else if($tab=='occasions')
+        {
+            //dd($request->all());
+            $data = [];
+            $imageName = null;
+            $heroslider = BusinessSetting::where('key', 'occasions')->first();
+            if($heroslider)
+            {
+                $data = json_decode($heroslider->value, true);
+            }
+            if($request->has('image'))
+            {
+                $imageName = \Carbon\Carbon::now()->toDateString() . "-" . uniqid() . ".png";
+                $request->image->move(public_path('assets/landing/image'), $imageName);
+
+            }
+            array_push($data, [
+                'img'=>$imageName,
+                'title'=>$request->occasion_slider_title,
+                'desc'=>$request->occasion_slider_desc
+            ]);
+
+            DB::table('business_settings')->updateOrInsert(['key' => 'occasions'], [
+                'value' => json_encode($data)
+            ]);
+            Toastr::success(trans('messages.landing_page_heroslider_updated'));
+        }
         else if($tab=='links')
         {
             DB::table('business_settings')->updateOrInsert(['key' => 'landing_page_links'], [
@@ -543,7 +574,7 @@ class BusinessSettingsController extends Controller
             ]);
             Toastr::success(trans('messages.landing_page_links_updated'));
         }
-         else if($tab=='heroslider')
+        else if($tab=='heroslider')
         {
             $data = [];
             $imageName = null;

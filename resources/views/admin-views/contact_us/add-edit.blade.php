@@ -53,7 +53,7 @@
                            </tr>                   
 
                           <tr>
-                              <th>E-mail<span class="asterisk">*</span></th>
+                              <th>E-mail<span class="asterisk"></span></th>
                               <td>
                                {{ Form::text('email', old('email'), ['class' => 'form-control','id' => 'email','placeholder' => 'E-mail']) }}
                                     <div class="badge-danger" id="emailCheck" role="alert"></div>
@@ -62,7 +62,15 @@
                           </tr>                  
 
                           <tr>
-                              <th>Message<span class="asterisk">*</span></th>
+                              <th>Subject<span class="asterisk"></span></th>
+                              <td>
+                               {{ Form::text('subject', old('subject'), ['class' => 'form-control','id' => 'subject','placeholder' => 'Subject']) }}
+                                 
+                              </td>
+                          </tr>                  
+
+                          <tr>
+                              <th>Message<span class="asterisk"></span></th>
                               <td>
                                {{ Form::textarea('message', old('message'), ['class' => 'form-control','id' => 'message', 'rows' => 3,  'placeholder' => 'Message']) }}
                                     <div class="badge-danger" id="messageCheck" role="alert"></div>
@@ -122,7 +130,7 @@ $(document).ready(function ()
     }
 
 
-    $("#emailCheck").hide();
+    /*$("#emailCheck").hide();
     let emailError = true;
     $("#email").on('keyup blur', function () {
         validateEmail();
@@ -149,7 +157,7 @@ $(document).ready(function ()
             emailError = true;
             return true;
         }
-    } 
+    } */
 
    
 
@@ -184,7 +192,7 @@ $(document).ready(function ()
         }
     }
 
-    $("#messageCheck").hide();
+    /*$("#messageCheck").hide();
        let messageError = true;
        $("#message").on('keyup blur', function () {
            validateMessage();
@@ -202,22 +210,20 @@ $(document).ready(function ()
            messageError = true;
            return true;
        }
-    }
+    }*/
 
 
 
     $('#submit').on('click', function(event) {
         
         validateName();
-        validateEmail();
+        //validateEmail();
         validatePhone();
-        validateMessage();
+        //validateMessage();
 
 
         if (nameError == false || 
-            emailError == false ||
-            phoneError == false ||
-            messageError == false
+            phoneError == false
         ) {  return false; }
         
     });

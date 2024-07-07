@@ -46,6 +46,9 @@
                     <a class="nav-link active" href="{{route('admin.business-settings.landing-page-settings', 'index')}}">{{__('messages.text')}}</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="{{route('admin.business-settings.landing-page-settings', 'occasions')}}"  aria-disabled="true">Occasions</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="{{route('admin.business-settings.landing-page-settings', 'links')}}"  aria-disabled="true">{{__('messages.button_links')}}</a>
                 </li>
                 <li class="nav-item">

@@ -316,6 +316,41 @@
                     }
             });
 
+
+        $("#occasions-owl-carousel").owlCarousel({
+                items:1,
+                loop:true,
+                nav:true,
+                dots:false,
+                autoplay:true,
+                autoplaySpeed:1000,
+                smartSpeed:1500,
+                autoplayHoverPause:false,
+                responsiveBaseElement: 'body',
+                responsive:{
+                1000:{
+                    items:1
+                },
+                979:{
+                    items:1
+                },
+                767:{
+                    items:1
+                },
+                500:{
+                    items:1
+                },
+                300:{
+                    items:1
+                },
+                0:{
+                    items:1
+                }
+                    }
+            });
+
+
+
     $("#ribboncms-owl-carousel").owlCarousel({
     items:3,
     loop:true,

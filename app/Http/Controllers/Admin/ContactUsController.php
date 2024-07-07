@@ -50,6 +50,7 @@ class ContactUsController extends Controller
                     $Records->phone                     = $request->phone;
                     $Records->email                     = $request->email;
                     $Records->message                   = $request->message;  
+                    $Records->subject                   = $request->subject;  
                     
                     $Records->save();
                     DB::commit();
@@ -85,6 +86,7 @@ class ContactUsController extends Controller
                     $Records->phone                     = $request->phone;
                     $Records->email                     = $request->email;
                     $Records->message                   = $request->message;  
+                    $Records->subject                   = $request->subject;  
                     
                     $Records->save();
                     DB::commit();

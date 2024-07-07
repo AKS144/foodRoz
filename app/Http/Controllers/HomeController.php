@@ -63,6 +63,7 @@ class HomeController extends Controller
                     $Records->name                      = $request->name;                    
                     $Records->phone                     = $request->phone;
                     $Records->email                     = $request->email;
+                    $Records->subject                   = $request->subject;
                     $Records->message                   = $request->message;                    
                     $Records->save();
                     DB::commit();

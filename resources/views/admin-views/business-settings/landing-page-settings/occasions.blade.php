@@ -46,7 +46,7 @@
                     <a class="nav-link" href="{{route('admin.business-settings.landing-page-settings', 'index')}}">{{__('messages.text')}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('admin.business-settings.landing-page-settings', 'occasions')}}"  aria-disabled="true">Occasions</a>
+                    <a class="nav-link active" href="{{route('admin.business-settings.landing-page-settings', 'occasions')}}"  aria-disabled="true">Occasions</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('admin.business-settings.landing-page-settings', 'links')}}"  aria-disabled="true">{{__('messages.button_links')}}</a>
@@ -55,7 +55,7 @@
                     <a class="nav-link" href="{{route('admin.business-settings.landing-page-settings', 'heroslider')}}"  aria-disabled="true">{{__('messages.heroSlider')}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="{{route('admin.business-settings.landing-page-settings', 'ribboncms')}}"  aria-disabled="true">{{__('messages.ribbonSlider')}}</a>
+                    <a class="nav-link" href="{{route('admin.business-settings.landing-page-settings', 'ribboncms')}}"  aria-disabled="true">{{__('messages.ribbonSlider')}}</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('admin.business-settings.landing-page-settings', 'speciality')}}"  aria-disabled="true">{{__('messages.speciality')}}</a>
@@ -76,22 +76,22 @@
 
     <div class="card my-2">
         <div class="card-body">
-            <form action="{{route('admin.business-settings.landing-page-settings', 'ribboncms')}}" method="POST" enctype="multipart/form-data">
-                @php($ribbonSlider = \App\Models\BusinessSetting::where(['key'=>'ribboncms'])->first())
-                @php($ribbonSlider = isset($ribbonSlider->value)?json_decode($ribbonSlider->value, true):null)
+            <form action="{{route('admin.business-settings.landing-page-settings', 'occasions')}}" method="POST" enctype="multipart/form-data">
+                @php($occasion_slider = \App\Models\BusinessSetting::where(['key'=>'occasions'])->first())
+                @php($occasion_slider = isset($occasion_slider->value)?json_decode($occasion_slider->value, true):null)
 
                 @csrf
 
                 <div class="form-group">
-                    <label class="input-label" for="ribbonslider_title">{{__('messages.ribbonSlider_title')}}</label>
-                    <input type="text" id="ribbonslider_title"  name="ribbonslider_title" class="form-control" >
+                    <label class="input-label" for="occasion_slider_title">{{__('messages.heroSlider_title')}}</label>
+                    <input type="text" id="occasion_slider_title"  name="occasion_slider_title" class="form-control" >
                 </div>
                 <div class="form-group">
-                    <label class="input-label" for="ribbonslider_desc">{{__('messages.ribbonSlider_desc')}}</label>
-                    <textarea type="text-area" id="ribbonslider_desc"  name="ribbonslider_desc" class="ckeditor" ></textarea>
+                    <label class="input-label" for="occasion_slider_desc">{{__('messages.heroSlider_desc')}}</label>
+                    <textarea type="text-area" id="occasion_slider_desc"  name="occasion_slider_desc" class="form-control" ></textarea>
                 </div>
                 <div class="form-group">
-                    <label class="input-label" >{{__('messages.ribbonSlider_img')}}<small style="color: red">* ( {{__('messages.size')}}: high-resolution )</small></label>
+                    <label class="input-label" >{{__('messages.heroSlider_img')}}<small style="color: red">* ( {{__('messages.size')}}: high-resolution )</small></label>
                     <div class="custom-file">
                         <input type="file" name="image" id="customFileEg1" class="custom-file-input"
                                 accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*" required>
@@ -114,14 +114,14 @@
                         <tr>
                             <th scope="col">#</th>
                             <th scope="col">{{__('messages.image')}}</th>
-                            <th style="word-wrap: break-word" scope="col">{{__('messages.heroSlider_title')}}</th>
-                            <th style="word-wrap: break-word" scope="col">{{__('messages.heroSlider_desc')}}</th>
+                            <th style="word-wrap: break-word" scope="col">SLIDE HEADER</th>
+                            <th style="word-wrap: break-word" scope="col">SLIDE DESCRIPTION</th>
                             <th scope="col">{{__('messages.action')}}</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @if($ribbonSlider)
-                        @foreach ($ribbonSlider as $key=>$sp)
+                        @if($occasion_slider)
+                        @foreach ($occasion_slider as $key=>$sp)
                             <tr>
                                 <td scope="row" style="width:10%">{{$key + 1}}</td>
                                 <td>
@@ -136,7 +136,7 @@
                                     <a class="btn btn-sm btn-white" href="javascript:"
                                         onclick="form_alert('sp-{{$key}}','{{__('messages.Want_to_delete_this_item')}}')" title="{{__('messages.delete')}}"><i class="tio-delete-outlined"></i>
                                     </a>
-                                    <form action="{{route('admin.business-settings.landing-page-settings-delete',['tab'=>'ribboncms', 'key'=>$key])}}"
+                                    <form action="{{route('admin.business-settings.landing-page-settings-delete',['tab'=>'occasions', 'key'=>$key])}}"
                                             method="post" id="sp-{{$key}}">
                                         @csrf @method('delete')
                                     </form>
@@ -153,7 +153,6 @@
 </div>
 @endsection
 
- <script src="//cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>
 @push('script_2')
     <script>
         function readURL(input) {
@@ -173,10 +172,8 @@
             $('#image-viewer-section').show(1000);
         });
 
-       
-
-    $(document).ready(function () {
-        $('.ckeditor').ckeditor();
-    });
+        $(document).on('ready', function () {
+            
+        });
     </script>
 @endpush
