@@ -699,6 +699,12 @@ class BusinessSettingsController extends Controller
                 $request->about_us_image->move(public_path('assets/landing/image'), $imageName);
                 $data['about_us_image'] = $imageName;
             }
+            if($request->has('contact_us_image'))
+            {
+                $imageName = \Carbon\Carbon::now()->toDateString() . "-" . uniqid() . ".png";
+                $request->contact_us_image->move(public_path('assets/landing/image'), $imageName);
+                $data['contact_us_image'] = $imageName;
+            }
 
             DB::table('business_settings')->updateOrInsert(['key' => 'landing_page_images'], [
                 'value' => json_encode($data)

@@ -133,12 +133,55 @@
          </div>
       </section>
       <!-- About Us End -->
+      <!-- Contact Us Start -->
+      <section class="about-us">
+         <div class="container">
+            <div class="row featured-section">
+               <div class="col-12 featured-title-m">
+                  <span>Contact Us</span>
+               </div>
+               <div
+                  class="col-lg-6 col-md-6  d-flex justify-content-center justify-content-md-start text-center text-md-left featured-section__image">
+                  <img src="{{asset('public/assets/landing')}}/image/{{isset($landing_page_images)?$landing_page_images['contact_us_image']:'about_us_image.png'}}"></img>
+               </div>
+               <!-- <div class="col-lg-3 col-md-0"></div> -->
+               <div class="col-lg-6 col-md-6">
+                  <div class="featured-section__content"
+                     class="d-flex justify-content-center justify-content-md-start text-center text-md-left">
+                     <span>Contact Us</span>
+                     <!-- <h2
+                        class="d-flex justify-content-center justify-content-md-start text-center text-md-left">
+                        Phone : {{\App\CentralLogics\Helpers::get_settings('phone')}},
+                        Email : {{\App\CentralLogics\Helpers::get_settings('email_address')}}
+                     </h2> -->
+                     <p
+                        class="d-flex justify-content-center justify-content-md-start text-center text-md-left">
+                        Phone : {{\App\CentralLogics\Helpers::get_settings('phone')}},
+                     </p>
+                     <p
+                        class="d-flex justify-content-center justify-content-md-start text-center text-md-left">
+                        Email : {{\App\CentralLogics\Helpers::get_settings('email_address')}}
+                     </p>
+                     <p
+                        class="d-flex justify-content-center justify-content-md-start text-center text-md-left">
+                        Address : {{\App\CentralLogics\Helpers::get_settings('address')}}
+                     </p>
+                     <div
+                        class="d-flex justify-content-center justify-content-md-start text-center text-md-left">
+                        <a href="{{route('contact-us')}}"
+                           class="btn btn-color-primary text-white rounded align-middle">Contact Here</a>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
+      <!-- Contact Us End -->
       <!-- Ribbon CMS Start -->
       @php($ribboncms = \App\Models\BusinessSetting::where(['key'=>'ribboncms'])->first())
       @php($ribboncms = isset($ribboncms->value)?json_decode($ribboncms->value, true):null)
       @if(isset($ribboncms) && count($ribboncms)>0)
-      <section id="slider" class="pt-5">
-         <div class="container">
+      <section id="slideContact Usdiv class="container">
             <h1 class="text-center"><b>{{isset($landing_page_text['ribbon_header'])?$landing_page_text['ribbon_header']:''}}</b></h1>
             <div class="slider">
                <div id="ribboncms-owl-carousel" class="owl-carousel">
